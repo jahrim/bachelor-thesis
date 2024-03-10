@@ -1,0 +1,59 @@
+\documentclass[12pt,a4paper,twoside,openright]{book}
+
+\usepackage[italian]{babel}
+\usepackage{style/isi-lt}
+
+\input{style/isi-lst}
+%--------------------------------------------------------------------
+%---------------------- INFORMAZIONI SULLA TESI ---------------------
+%--------------------------------------------------------------------
+
+\universita{Alma Mater Studiorum -- Università di Bologna}
+\campus{Campus di Cesena}
+\dipartimento{Dipartimento di Informatica -- Scienza e Ingegneria}
+\cdl{Corso di Laurea in Ingegneria e Scienze Informatiche}
+
+\titolo{PROGETTAZIONE E SVILUPPO DI UN SISTEMA DOMOTICO
+INTEGRATO CON ASSISTENTE VOCALE A SUPPORTO
+DI SERVIZI SOCIO-ASSISTENZIALI BASATI SU GAMIFICATION}
+\materia{Sistemi Embedded e Internet Of Things}
+
+\laureando{Jahrim Gabriele Cesario}
+
+\relatore[Prof.]{Alessandro Ricci}
+\correlatorea[Ing.]{Massimiliano Malavasi}
+\correlatoreb[Dott.ssa]{Laura Bugo}
+
+\annoaccademico{2020 -- 2021}
+
+\makeindex
+
+\begin{document}
+\frontmatter
+
+\maketitle
+\tableofcontents
+
+\input{thesis-parts/0-introduction.tex}
+
+\mainmatter
+
+\pagestyle{fancy}
+\fancyhead[LE,RO]{\thepage}
+\fancyfoot{}
+
+\input{thesis-parts/1-problem-definition.tex}
+\input{thesis-parts/2-problem-analysis.tex}
+\input{thesis-parts/3-system-design.tex}
+\input{thesis-parts/4-skill-design.tex}
+\input{thesis-parts/5-implementation.tex}
+\input{thesis-parts/6-validation.tex}
+\input{thesis-parts/7-conclusions.tex}
+\input{thesis-parts/8-acknowledgements.tex}
+
+\backmatter
+
+\bibliography{bibliography}{}
+\bibliographystyle{unsrt}
+
+\end{document}

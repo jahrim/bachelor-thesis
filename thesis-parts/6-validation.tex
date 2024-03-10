@@ -1,0 +1,139 @@
+% ! TeX root = ../bachelor-thesis.tex
+
+\chapter{Validazione del sistema}
+\label{ch:Chapter6}
+
+In questo capitolo, si descriveranno i metodi utilizzati per validare
+l'applicazione, ovvero i test che sono stati eseguiti per verificarne la
+correttezza e l’adeguatezza rispetto i requisiti preposti.
+
+\section{Metodi di validazione}
+\label{sec:Section6.1}
+
+Al tempo della scrittura di questo elaborato, viste anche le limitazioni legate
+all'emergenza \textit{COVID-19}, non era ancora stato possibile eseguire delle
+prove che coinvolgessero il target dell'applicazione. Questi test sugli utenti
+finali sono necessari ancor di più nel contesto della \textit{gamification},
+quindi saranno sicuramente eseguiti in futuro.
+
+Per il momento, nondimeno, sono stati eseguiti numerosi \textit{friendly-trial}
+in ambiente chiuso all’interno del CRA di Bologna. Nello specifico, sono state
+eseguite delle prove che verificassero:
+\begin{itemize}
+  \item[--] La \textit{\textbf{possibilità di controllare i dispositivi
+            domotici attraverso OpenHAB}}; per questo è stata utilizzata
+        l’interfaccia grafica costruita, accertandosi che a un comando
+        dell'utente corrispondesse una reazione adeguata del sistema
+        domotico (ad esempio, in riferimento alle figure
+        \ref{fig:figure5.2} e \ref{fig:figure5.3}, alla pressione del
+        pulsante \textit{light\_switch}, la lampadina \textit{lightbulb1}
+        si deve accendere o spegnere);
+  \item[--] La \textit{\textbf{possibilità di controllare i dispositivi
+            domotici con dei comandi vocali attraverso Alexa}}; per questo è
+        stata utilizzata la skill di OpenHAB attraverso Alexa, accertandosi che
+        a un comando vocale dell'utente corrispondesse una reazione adeguata
+        del sistema domotico (ad esempio, in riferimento alle figure
+        \ref{fig:figure5.2} e \ref{fig:figure5.3}, dicendo ad Alexa
+        \textit{"Accendi / Spegni la Lampadina Hue"}, la lampadina
+        \textit{lightbulb1} si deve accendere o spegnere);
+  \item[--] La \textit{\textbf{capacità di OpenHAB di notificare l’utente di
+            certi eventi relativi ai dispositivi domotici connessi}}; per
+        questo sono stati generati degli eventi nel sistema domotico,
+        accertandosi che questi fossero comunicati correttamente attraverso
+        Alexa (ad esempio, in riferimento alla figura \ref{fig:figure5.4},
+        Alexa deve comunicare quando la lampadina \textit{lightbulb1} viene
+        accesa o spenta);
+  \item[--] L'\textit{\textbf{adeguatezza delle skill nell’esercitare le
+            capacità cognitive dell’utente}}; per questo si è lasciato giocare
+        alcuni utenti che non fossero direttamente coinvolti
+        nell'implementazione delle \textit{skill}, prendendo atto delle
+        recensioni e del feedback ricevuto, così da effettuare cambiamenti che
+        ne migliorassero l'usabilità.
+\end{itemize}
+Il funzionamento del sistema è stato testato da alcuni membri del personale del
+CRA di Bologna. Nello specifico, i risultati ottenuti sul sistema domotico e
+sulle \textit{skill} di Alexa sono stati approvati da alcuni componenti del
+team multidisciplinare del CRA, tra cui la neuropsicologa \textit{Dott.ssa
+  Arianna Gherardini}, e i correlatori \textit{Ing. Massimiliano Malavasi},
+coordinatore del CRA, e \textit{Dott.ssa Laura Bugo}, sviluppatrice software.
+
+\section{Risultati ottenuti}
+\label{sec:Section6.2}
+
+Di seguito, saranno riportati e commentati i risultati ottenuti dai test
+eseguiti sul sistema domotico e sulle \textit{skill} implementate.
+
+\subsection{Il sistema domotico}
+\label{subsec:Section6.2.1}
+
+Il funzionamento del sistema domotico si è rilevato adeguato e soddisfacente.
+Tuttavia, è possibile fare alcuni commenti sulle responsività constatate nelle
+diverse interazioni rese disponibili all'utente.
+
+L'\textit{interazione attraverso l'interfaccia grafica} è quella con minor
+latenza. Ciò ha senso se si tiene conto del fatto che i comandi inviati tramite
+interfaccia grafica sono inviati a OpenHAB senza intermediari. Maggiore è
+invece la latenza delle \textit{interazioni vocali attraverso Alexa}. In questo
+caso, i comandi devono essere interpretati dal cloud di Alexa, per questo
+trascorrono un paio di secondi prima che l'utente possa osservare un riscontro
+sul sistema domotico. Considerando che lo scopo dell'integrazione con Alexa era
+in primo luogo di fornire ulteriori strumenti accessibili per controllare il
+proprio sistema domotico, i tempi di risposta ottenuti sono stati valutati come
+accettabili. Altrettanta latenza si è stata constatata nella \textit{ricezione
+delle notifiche} sugli eventi accaduti nel sistema domotico. Questa funzione
+era stata pensata per ricordare all'utente alcuni compiti da svolgere, a orari
+prestabiliti, in base allo stato del sistema domotico (come ricordare
+all'utente di chiudere le finestre d'inverno prima di dormire, se ce n'è
+qualcuna aperta). Qualche secondo di differenza rispetto a tali orari, non
+influenza il risultato finale, quindi anche in questo caso si è ritenuto il
+sistema soddisfacente.
+
+\subsection{Number List Game}
+\label{subsec:Section6.2.2}
+
+Riguardo alla \textit{skill} Number List Game, sono stati ricevuti alcuni
+feedback costruttivi, soprattutto riguardo ad alcuni problemi di progettazione.
+Nel complesso, è stato un buon primo tentativo d'implementazione di una
+\textit{skill} per Alexa.
+
+I feedback ricevuti riguardano soprattutto il flusso di dialogo. Infatti, la
+\textit{skill} richiede una conferma ogni volta che l'utente invia la risposta
+al quesito precedentemente comunicato da Alexa. Considerando che, nelle
+interazioni con una \textit{skill}, ovvero con il cloud, esiste anche una certa
+latenza, ciò può diventare abbastanza tedioso per il giocatore. Nelle
+\textit{skill} progettate successivamente, si è dunque deciso di snellire il
+modello di dialogo, raggiungendo gli stessi risultati attraverso meno
+interazioni.
+
+\subsection{Category Game}
+\label{subsec:Section6.2.3}
+
+La \textit{skill} Category Game ha ricevuto feedback molto positivi. Non
+significa però, che non possano ancora essere migliorati alcuni suoi aspetti.
+
+Il problema principale è la mancanza di contenuti. In effetti, la
+\textit{skill} necessita di una maggiore varietà di categorie e di parole
+conosciute: capita spesso che sia richiesto all'utente di categorizzare la
+stessa parola in un breve periodo di tempo, oppure di fare partite consecutive
+in cui siano coinvolte le stesse categorie. Siccome le categorie e le parole
+sono definite in modo statico, una soluzione potrebbe essere l'aggiornamento
+dei file che le contengono, o ancora meglio, se possibile, richiederle a
+servizi terzi che già gestiscono dati simili.
+
+\subsection{Labyrinth Game}
+\label{subsec:Section6.2.4}
+
+Labyrinth Game è stato un esperimento che ha avuto abbastanza successo. In fase
+di progettazione, si pensava infatti che sarebbe stato troppo difficile per
+l'utente seguire il flusso di dialogo del gioco e pertanto interagire con la
+\textit{skill}. Tuttavia, si è scoperto invece che ci si abitua velocemente
+alla struttura con cui si riferiscono le informazioni nel gioco. Dunque, già
+all'interno della prima partita, le difficoltà iniziali vengono riscontrate
+sempre meno.
+
+Questi risultati sono stati ottenuti dopo alcune fasi di raffinamento, in cui
+lo scopo principale era di bilanciare il dialogo tra l'utente e Alexa: in
+questo tipo di gioco, l'utente riceve molte più informazioni rispetto a quelle
+che fornisce. Per agevolare la concentrazione dell'utente, si è quindi cercato
+di essere il più possibile concisi e schematici nel riferirgli le informazioni
+necessarie per giocare, così da rendere il dialogo più interattivo.

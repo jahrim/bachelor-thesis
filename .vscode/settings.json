@@ -1,0 +1,22 @@
+{
+  // Build
+  "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build",
+  // Grammar
+  "ltex.language": "it",
+  "ltex.additionalRules.enablePickyRules": true,
+  // Formatting
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.rulers": [
+    80
+  ],
+  "editor.formatOnSave": true,
+  "latex-workshop.latexindent.args": [
+    "-cruft=%WORKSPACE_FOLDER%/.latexindent/",
+    "-local=%WORKSPACE_FOLDER%/latexindent.yaml",
+    "-modifylinebreaks",
+    "--overwriteIfDifferent",
+    "%TMPFILE%"
+  ]
+}
